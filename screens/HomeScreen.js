@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Image, StatusBar, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useLayoutEffect } from 'react'
@@ -40,14 +40,25 @@ const HomeScreen = () => {
 
 
     {/* image container section */}
-    <View className="flex-1 items-center justify-center">
+    <View className="flex-1 relative items-center justify-center">
       <Image source={require('../assets/hero.png')} className="w-full h-full object-cover mt-8 "/>
-    </View>
 
+     
+      <View className="absolute bottom-20 w-24 h-24 border-l-2 border-r-2 border-t-4 border-[#00bcc9] rounded-full items-center justify-center">
+      <TouchableOpacity>  
+         <View className="w-20 h-20 items-center justify-center rounded-full bg-[#00bcc9] animate-pulse">
+          <Text className="text-gray-50 text-[40px] font-semibold">Go</Text>
+        </View>
+        </TouchableOpacity>
+      </View>
     
 
-    {/* image container section */}
+</View>
 
+
+
+   
+    
 
    </SafeAreaView>
 
