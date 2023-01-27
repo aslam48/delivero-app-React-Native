@@ -8,6 +8,8 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import MenuContainer from '../components/MenuContainer'
 import { useState } from 'react'
 import ItemCardContainer from '../components/ItemCardContainer'
+import { useEffect } from 'react'
+import { getPlaceData } from '../api'
 
 
 
@@ -16,12 +18,22 @@ import ItemCardContainer from '../components/ItemCardContainer'
 const Discover = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [type, setType] = useState("restaurants")
-    const [mainData, setMainData] =useState([])
+    const [mainData, setMainData] = useState([])
 
     const navigation = useNavigation()
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false
+        })
+    },[])
+
+    useEffect(() => {
+        setIsLoading(true)
+        getPlaceData().then((data) => {
+            setMainData(data);
+            setInterval(() => {
+                setIsLoading(false)
+            }, 2000)
         })
     },[])
 
@@ -75,7 +87,7 @@ const Discover = () => {
     />
 
 <MenuContainer 
-   key={"rttractions"}
+   key={"attractions"}
     title="Attractions"
     imageSrc={Attractions}
     type={type}
@@ -107,12 +119,12 @@ const Discover = () => {
         <ItemCardContainer key={"102"} imageSrc={"https://images.unsplash.com/photo-1661961110671-77b71b929d52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=400&q=60"} title="" location=""/>
     <ItemCardContainer key={"101"} imageSrc={"https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60"} title="" location=""/>
     </> ) 
-    : (<>
+    : ( <>
     <View className="w-full h-[290px] items-center space-y-8 justify-center">
         <Image source={NotFound} className="w-32 h-32 object-cover"/>
         <Text className="text-2xl text-[#428288] font-semibold">Opps.. No Data Found</Text>
     </View>
-    </>)}
+    </>) }
    </View>
 
     </ScrollView>
