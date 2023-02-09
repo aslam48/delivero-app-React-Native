@@ -1,10 +1,11 @@
 {
   "expo": {
-    "name": "deliveroo-clone",
-    "slug": "deliveroo-clone",
+    "name": "Go Travel",
+    "slug": "go-travel",
+    "description":"This is an app that give you the best place for vacation",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/restaurants.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/restaurants.png",
