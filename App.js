@@ -20,8 +20,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Discover" component={Discover} />
       </Stack.Navigator>
-      
-    
+  
     </TailwindProvider>
     </NavigationContainer>
   );
